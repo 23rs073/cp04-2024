@@ -38,6 +38,11 @@
         $('#btnC').click(function(e) {
             btnCClick(e);
         });
+
+        $('#btnV').click(function(e) {
+            btnBClick(e);
+        });
+
         init();
     });
     
@@ -166,7 +171,7 @@
         $('#btnA').prop('disabled', false);
         $('#btnB').prop('disabled', false);
         $('#btnC').prop('disabled', false);
-        $("#btnB").prop("disabled", true);
+        $('#btnV').prop('disabled', false);
         btnCClick(null);
     }
 
@@ -210,6 +215,30 @@
         active = false;
         period = 60* parseInt( $("#minute").val() ) + parseInt( $("#second").val() ); $("#time").html("経過時間： 0");
         $("#remain").html("残り時間： " + m+"分"+s+"秒");
+
+
+    $(function() { 
+        $('#btnV').click(function(e) {
+            btnVClick(e);
+        });
+        init();
+    });
+        function btnVClick(e) {
+        // ボタンの背景色をランダムに変更
+        var colors = ["#FFCCCC", "#CCFFCC", "#CCCCFF", "#FFFFCC", "#FFCCFF", "#CCFFFF","#E03030","#5363E5","#12FC2F","#F4FC12","#FC9F12","#D2D5F7","#5B5C6C"];
+        var randomColor = colors[Math.floor(Math.random() * colors.length)];
+        $('#btnV').css('background-color', randomColor);
+         var randomColors = colors[Math.floor(Math.random() * colors.length)];
+        $('#btnA').css('background-color', randomColors);
+         var randomColorss = colors[Math.floor(Math.random() * colors.length)];
+        $('#btnB').css('background-color', randomColorss);
+         var randomColorss = colors[Math.floor(Math.random() * colors.length)];
+        $('#btnC').css('background-color', randomColorss);
+    }
+    function init(){
+        $('#btnV').prop('disabled', false);
+    }
+        
         
     }
     
@@ -242,9 +271,10 @@
 
     <div id="remain">Remaining time</div>
     <div id="time">Time</div>
-    <button id="btnA">Start</button>  
-    <button id="btnB">Stop</button>  
-    <button id="btnC">Set</button>  
+    <button id="btnA">開始</button>  
+    <button id="btnB">停止</button>  
+    <button id="btnC">リセット</button>  
+    <button id="btnV">色変更</button>  
     <input type="number" id="minute" value=0 >
     <input type="number" id="second" value=15 >
 </body>
